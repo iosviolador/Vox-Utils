@@ -1,15 +1,9 @@
 $t = "$env:TEMP\v.mp4"
 
-Start-BitsTransfer -Source "https://raw.githubusercontent.com/iosviolador/Vox-Utils/refs/heads/main/AntiPiracy.mp4" `
-                   -Destination $t `
-                   -Priority Foreground `
-                   -RetryInterval 2 -MaximumRetryCount 5
+Start-BitsTransfer -Source "https://raw.githubusercontent.com/iosviolador/Vox-Utils/refs/heads/main/AntiPiracy.mp4" -Destination $t -Priority Foreground -RetryInterval 2 -MaximumRetryCount 5
 
 if (!(Test-Path $t) -or (Get-Item $t).Length -lt 100000) {
-    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/iosviolador/Vox-Utils/refs/heads/main/AntiPiracy.mp4" `
-                      -OutFile $t `
-                      -UseBasicParsing `
-                      -MaximumRetryCount 5 -RetryIntervalSec 2
+    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/iosviolador/Vox-Utils/refs/heads/main/AntiPiracy.mp4" -OutFile $t -UseBasicParsing
 }
 
 while (!(Test-Path $t) -or (Get-Item $t).Length -lt 100000) {
